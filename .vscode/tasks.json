@@ -12,11 +12,8 @@
         "-b",
         "rpi_pico",
         "-d",
-        "\"${workspaceFolder}/build\"",
-        "\"${workspaceFolder}\"",
-        "-S",
-        "usb_serial_port",
-        "-DSNIPPET_ROOT=${workspaceFolder}",
+        "\"${command:raspberry-pi-pico.getZephyrWorkspacePath}/apps/led/build\"",
+        "\"apps/led\"",
         "--",
         "-DOPENOCD=${command:raspberry-pi-pico.getOpenOCDRoot}/openocd",
         "-DOPENOCD_DEFAULT_PATH=${command:raspberry-pi-pico.getOpenOCDRoot}/scripts"
@@ -38,6 +35,7 @@
       },
       "windows": {
         "options": {
+          "cwd": "${command:raspberry-pi-pico.getZephyrWorkspacePath}",
           "env": {
             "Path": "${command:raspberry-pi-pico.getGitPath};${env:Path};"
           },
@@ -61,7 +59,7 @@
       "args": [
         "flash",
         "--build-dir",
-        "\"${workspaceFolder}/build\""
+        "\"${command:raspberry-pi-pico.getZephyrWorkspacePath}/apps/led/build\""
       ],
       "options": {
         "cwd": "${command:raspberry-pi-pico.getZephyrWorkspacePath}"
@@ -73,12 +71,15 @@
       "command": "\"${command:raspberry-pi-pico.getPicotoolPath}\"",
       "args": [
         "load",
-        "\"${workspaceFolder}/build/zephyr/zephyr.elf\"",
+        "\"${command:raspberry-pi-pico.getZephyrWorkspacePath}/apps/led/build/zephyr/zephyr.elf\"",
         "-fx"
       ],
       "presentation": {
         "reveal": "always",
         "panel": "dedicated"
+      },
+      "options": {
+        "cwd": "${command:raspberry-pi-pico.getZephyrWorkspacePath}"
       },
       "problemMatcher": [],
       "dependsOrder": "sequence",
