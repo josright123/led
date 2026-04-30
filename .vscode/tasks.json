@@ -14,7 +14,10 @@
         "-d",
         "\"${command:raspberry-pi-pico.getZephyrWorkspacePath}/apps/led/build\"",
         "\"apps/led\"",
+        "-S",
+        "usb_serial_port",
         "--",
+        "-DSNIPPET_ROOT=${command:raspberry-pi-pico.getZephyrWorkspacePath}/apps/led",
         "-DOPENOCD=${command:raspberry-pi-pico.getOpenOCDRoot}/openocd",
         "-DOPENOCD_DEFAULT_PATH=${command:raspberry-pi-pico.getOpenOCDRoot}/scripts"
       ],
